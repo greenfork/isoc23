@@ -1,0 +1,3 @@
+[submodule "jaylib"]
+	path = jaylib
+	url = git@github.com:greenfork/jaylib.git
