@@ -4,6 +4,11 @@ Reproduction of isoc23 compilation failure.
 $ git clone https://github.com/greenfork/isoc23.git
 $ cd isoc23
 $ git submodule update --init --recursive jaylib
+
+# Add janet.h to the include path (remember to delete it afterwords)
+$ sudo mkdir /usr/local/include/janet
+$ sudo cp src/janet.h /usr/local/include/janet/
+
 $ zig version
 0.11.0
 $ zig build # works fine
@@ -37,4 +42,6 @@ error: ld.lld: undefined symbol: __isoc23_strtoul
 $ zig version # same on master
 0.12.0-dev.1814+5c0d58b71
 $ zig build -Dtarget=x86_64-linux-gnu # fails
+
+$ sudo rm -r /usr/local/include/janet
 ```
