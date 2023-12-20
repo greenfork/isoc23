@@ -5,7 +5,7 @@ $ git clone https://github.com/greenfork/isoc23.git
 $ cd isoc23
 $ git submodule update --init --recursive jaylib
 
-# Add janet.h to the include path (remember to delete it afterwords)
+# Add janet.h to the hardcoded in jaylib include path (remember to delete it afterwords)
 $ sudo mkdir /usr/local/include/janet
 $ sudo cp src/janet.h /usr/local/include/janet/
 
@@ -44,4 +44,14 @@ $ zig version # same on master
 $ zig build -Dtarget=x86_64-linux-gnu # fails
 
 $ sudo rm -r /usr/local/include/janet
+```
+
+Commenting lines in `src/thehouse_hello_world.c` that include the jaylib
+library also resolve the problem.
+
+```c
+    temptab = janet_table(0);
+    temptab->proto = env;
+    janet_module_entry_jaylib(temptab);
+    janet_env_lookup_into(lookup, temptab, "_0000iS", 0);
 ```
