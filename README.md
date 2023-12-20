@@ -3,6 +3,8 @@ Reproduction of isoc23 compilation failure.
 ```
 $ git clone https://github.com/greenfork/isoc23.git
 $ cd isoc23
+
+# Wait a bit because this command downloads a large Raylib repository!
 $ git submodule update --init --recursive jaylib
 
 # Add janet.h to the hardcoded in jaylib include path (remember to delete it afterwords)
